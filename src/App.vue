@@ -1,6 +1,5 @@
 <template>
   <HeaderComponent/>
-  <MainComponent/>
     <ul>
       <li v-for="project in projects" :key="project.id">
         {{ project.project_title }}
@@ -8,13 +7,12 @@
     </ul>
     <button @click="nextPage()">Avanti</button>
     <button @click="previousPage()">Indietro</button>
-  <FooterComponent/>
 </template>
 
 <script>
   import HeaderComponent from './components/HeaderComponent.vue';
   import axios from "axios";
-  import {store} from "./store.js";
+  import {store} from "./assets/data/store";
   export default {
     name: 'App',
     components: {
