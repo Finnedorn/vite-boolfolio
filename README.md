@@ -78,4 +78,7 @@ export const store = reactive({
 
 npm run dev -- --port 5174 (API_URL='http://127.0.0.1:8000/api')
 
+#solo se non avessi installato vue router:
+
+
 ```
