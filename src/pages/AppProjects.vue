@@ -3,8 +3,14 @@
         Projects:
     </h1>
     <ul>
-        
+        <li v-for="project in projects">
+            {{ project.project_title }}
+        </li>
+        <!-- <router-link class="nav-link active" :to="{name: 'project-info', params:{ slug: project.slug }}">
+            {{ project.project_title }}
+        </router-link> -->
     </ul>
+
 </template>
   
 <script>
