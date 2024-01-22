@@ -2,7 +2,21 @@
     <h1>single project</h1>
     <div v-if="project">
         <h1>{{ project.project_title }}</h1>
-        <!-- <img src="`${store.imgBasePath}${project.preview}`" alt="{{ project.project_title }}"> -->
+        <h4>{{ project.repo_name }}</h4>
+        <h6>{{ project.repo_link }}</h6>
+        <h6>{{ project.category.name }}</h6>
+        <div>
+            <h6>Tecnologie:</h6>
+            <div v-for="technology in project.technologies">
+                {{ technology.name }}
+            </div>
+        </div>
+        <div class="w-25">
+            <img :src="store.imgBasePath+project.preview"  :alt="project.project_title">
+        </div>
+        <p>
+            {{ project.description }}
+        </p>
     </div>
 </template>
 
@@ -23,13 +37,13 @@ export default {
     methods: {
         getProjectInfo() {
             console.log('ciao');
-            axios.get(store.apiUrl + "projects/" + this.$route.params.slug).then((res)=>{
+            axios.get(this.store.apiUrl + "/projects/" + this.$route.params.slug).then((res)=>{
                 console.log(res.data);
-                // if(res.data.results) {
-                //     this.project=res.data.results
-                // }else {
-                //     this.$router.push({name: 'not-found'})
-                // }
+                if(res.data.results) {
+                    this.project=res.data.results
+                }else {
+                    this.$router.push({name: 'not-found'})
+                }
             })
         }
     },
