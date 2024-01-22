@@ -1,4 +1,4 @@
-@use '/src/assets/partials/variables.scss' as *;
+// @use '/src/assets/partials/variables.scss' as *;
 
 $fa-font-path: '../webfonts';
 @import '@fortawesome/fontawesome-free/scss/fontawesome.scss';
@@ -7,3 +7,4 @@ $fa-font-path: '../webfonts';
 @import '@fortawesome/fontawesome-free/scss/brands.scss';
 
 @import 'bootstrap/scss/bootstrap';
+
