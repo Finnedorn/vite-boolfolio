@@ -44,8 +44,14 @@ export default {
         };
     },
     methods: {
+        // getBadge() {
+        //     let badge = document.querySelector('.badge');
+        //     console.log(badge);
+        // }
+
     },
     mounted() {
+        // getBadge();
     }
 };
 </script>

@@ -1,7 +1,9 @@
 <template>
-    <h1>single project</h1>
     <div v-if="project">
         <h1>{{ project.project_title }}</h1>
+        <div class="w-25">
+            <img :src="store.imgBasePath+project.preview"  :alt="project.project_title">
+        </div>
         <h4>{{ project.repo_name }}</h4>
         <h6>{{ project.repo_link }}</h6>
         <h6>{{ project.category.name }}</h6>
@@ -10,9 +12,6 @@
             <div v-for="technology in project.technologies">
                 {{ technology.name }}
             </div>
-        </div>
-        <div class="w-25">
-            <img :src="store.imgBasePath+project.preview"  :alt="project.project_title">
         </div>
         <p>
             {{ project.description }}

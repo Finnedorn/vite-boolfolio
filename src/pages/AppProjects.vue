@@ -6,7 +6,7 @@
         <CardComponent
         v-for="(project, index) in store.projects"
         :key="index"
-        :link="{name: 'project-info', params:{ slug: project.slug }}"
+        :link="{name:'project-info', params:{ slug: project.slug }}"
         :source="store.imgBasePath+project.preview"
         :title="project.project_title"
         :subtitle="project.repo_name"
