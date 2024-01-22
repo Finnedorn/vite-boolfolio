@@ -6,9 +6,14 @@
         </div>
         <div class="card-body ">
             <div>
-                <h4 class="text-my-red">
+                <router-link :to="link">
+                    <h4 class="text-my-red">
                     {{ title }}
-                </h4>
+                    </h4>
+                </router-link>
+                <!-- <h4 class="text-my-red">
+                    {{ title }}
+                </h4> -->
                 <h6 class="fw-light">
                     {{ subtitle }}
                 </h6>
@@ -23,16 +28,19 @@
 </template>
   
 <script>
+import { store } from "../assets/data/store";
 export default {
     name: "CardComponent",
     props: {
         source: String,
+        link: Object,
         title: String,
         subtitle: String,
         badges: Array
     },
     data() {
         return {
+            store,
         };
     },
     methods: {
