@@ -1,6 +1,6 @@
 <template>
-    <div class="col-2 card  overflow-hidden mx-1 rounded-1">
-        <div class="img-wrapper">
+    <div class="col-lg-2 col-md-1 card mx-1 rounded-1 p-2">
+        <div class="overflow-hidden rounded-2 ">
             <img :src="source"
                 :alt="title" />
         </div>
@@ -9,9 +9,14 @@
                 <h4 class="text-my-red">
                     {{ title }}
                 </h4>
-                <h5 class="fw-light">
+                <h6 class="fw-light">
                     {{ subtitle }}
-                </h5>
+                </h6>
+            </div>
+            <div class="pt-2">
+                <small v-for="badge in badges" class="badge text-bg-primary mx-1">
+                    {{ badge.name }}
+                </small>
             </div>
         </div>
     </div>
@@ -24,6 +29,7 @@ export default {
         source: String,
         title: String,
         subtitle: String,
+        badges: Array
     },
     data() {
         return {
@@ -38,11 +44,7 @@ export default {
   
 <style lang="scss" scoped>
 
-.img-wrapper {
-    width: 250px;
-}
-
-div>img {
+img {
     width: 100%;
 }
 </style>

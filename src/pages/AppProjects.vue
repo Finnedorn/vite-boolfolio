@@ -2,22 +2,24 @@
     <h1>
         Projects:
     </h1>
-    <div class="row">
+    <div class="row m-3">
         <CardComponent
         v-for="(project, index) in store.projects"
         :key="index"
         :source="store.imgBasePath+project.preview"
         :title="project.project_title"
-        :subtitle="project.subtitle"
+        :subtitle="project.repo_name"
+        :badges="project.technologies"
         />
     </div>
-    <!-- <ul>
+    <ul>
         <li v-for="project in store.projects">
             <router-link  :to="{name: 'project-info', params:{ slug: project.slug }}">
             {{ project.project_title }}
             </router-link>
         </li>
-    </ul> -->
+    </ul>
+    
 </template>
   
 <script>
