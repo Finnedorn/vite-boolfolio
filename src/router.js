@@ -30,6 +30,7 @@ const router = createRouter({
     },
     // imposto una rotta di fallback
     // in caso di errore di pagina non trovata, mi redireziona qua 
+    // ricordati che questa rotta va messa sempre per ultima
     {
       path: "/:pathMatch(.*)*",
       name:"not-found",

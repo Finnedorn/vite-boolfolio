@@ -1,5 +1,11 @@
 <template>
     <form @submit.prevent="submitForm">
+        <p v-if="errors.legth">
+            <b>Correggi i seguenti errori per continuare:</b>
+            <ul>
+                <li v-for="error in errors">{{ error }}</li>
+            </ul>
+        </p>
         <div class="mb-3">
             <label for="name" class="form-label">Nome</label>
             <input type="text" class="form-control" id="name" aria-describedby="nameHelp" v-model="name">
@@ -16,7 +22,7 @@
             <div id="address" class="form-text">Inserisci il tuo indirizzo</div>
         </div>
         <div class="mb-3">
-            <label for="message" class="form-label">Messagio</label>
+            <label for="message" class="form-label">Messaggio</label>
             <textarea  class="form-control" id="message" aria-describedby="message" v-model="message">
             </textarea>
             <div id="message" class="form-text">Inserisci un tuo messaggio</div>
@@ -27,7 +33,6 @@
 </template>
   
 <script>
-// import axios from "axios";
 import axios from "axios";
 import { store } from "../assets/data/store";
 export default {
@@ -37,14 +42,16 @@ export default {
     data() {
         return {
             store,
-            name: '',
-            email: '',
-            address: '', 
-            message: '',
+            name: null,
+            email: null,
+            address: null, 
+            message: null,
+            errors: [],
         };
     },
     methods: {
         submitForm() {
+
             const data= {
                 name: this.name,
                 email: this.email,
@@ -52,18 +59,33 @@ export default {
                 message: this.message,
             };
 
+            if(!data.name || !data.email || !data.address || !data.message) {
+                if(!data.name) {
+                    this.errors.push('Il campo nome è obbligatorio');
+                }
+                if(!data.email) {
+                    this.errors.push('Il campo email è obbligatorio');
+                }
+                if(!data.address) {
+                    this.errors.push('Il campo indirizzo è obbligatorio');
+                }
+                if(!data.message) {
+                    this.errors.push('Il campo messaggio è obbligatorio');
+                }
+                return this.errors;
+            }
+
             axios.post(this.store.apiUrl+'/contacts', data).then((res)=>{
-                this.name= '';
-                this.email= '';
-                this.address= '';
-                this.message= '';
+                this.name= null;
+                this.email= null;
+                this.address= null;
+                this.message= null;
             }).catch((err)=>{
                 console.log('error', err);
-            })
+            });
         }
     },
     mounted() {
-
     }
 }
 </script>
