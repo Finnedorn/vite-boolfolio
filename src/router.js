@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import AppHome from './pages/AppHome.vue';
 import AppProjects from './pages/AppProjects.vue';
 import AppProjectInfo from './pages/AppProjectInfo.vue';
+import AppContact from './pages/AppContact.vue';
 import NotFound from './pages/NotFound.vue';
 
 const router = createRouter({
@@ -21,6 +22,11 @@ const router = createRouter({
       path:"/projects/:slug",
       name:"project-info",
       component: AppProjectInfo
+    },
+    {
+      path:"/contacts",
+      name:"contacts",
+      component: AppContact
     },
     // imposto una rotta di fallback
     // in caso di errore di pagina non trovata, mi redireziona qua 

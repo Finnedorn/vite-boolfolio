@@ -17,6 +17,10 @@
             {{ project.description }}
         </p>
     </div>
+    <router-link :to="{name: 'project-info', params: {slug: 'boolflix'}}">
+        linkone!!!
+    </router-link>
+    
 </template>
 
 <script>
@@ -36,18 +40,25 @@ export default {
     methods: {
         getProjectInfo() {
             console.log('ciao');
+            // lo slug che uso viene passato dal routerlink tramite la variabile nativa $route
             axios.get(this.store.apiUrl + "/projects/" + this.$route.params.slug).then((res)=>{
-                console.log(res.data);
+                // console.log(res.data);
                 if(res.data.results) {
                     this.project=res.data.results
                 }else {
                     this.$router.push({name: 'not-found'})
                 }
             })
-        }
+        },
+        
     },
     mounted() {
         this.getProjectInfo();
+        // this.$watch(() => this.$route.params, (toParams, previousParams) => {
+        //     if(toParams !== previousParams){
+        //         this.getProjectInfo();
+        //     }
+        // })
     }
 }
 </script>
